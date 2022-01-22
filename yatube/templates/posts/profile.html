@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ user.get_full_name }} профайл пользователя{% endblock title %}
+{% block content %}
+{% if user.is_authenticated %}
+{% comment %} {{ user.username }} 
+{{ user.email }}
+{{ user.first_name }} 
+{{ user.last_name }} 
+{{ user.get_full_name }}
+{{posts_count}}  {% endcomment %}
+<div class='container py-5'>
+  <h1>Все посты пользователя {{ user.get_full_name }} </h1>
+  <h3>Всего постов: {{posts_count}} </h3>
+
+
+  {% for post in page_obj %}
+    <article>
+        {% include 'includes/article.html' with show_group_link=True %}
+    </article>
+  {% endfor %}
+  {% include 'includes/paginator.html' %}
+  {% endif %}
+</div>
+{% endblock content %}
+    
+
+        
