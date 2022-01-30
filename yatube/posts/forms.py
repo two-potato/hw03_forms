@@ -10,12 +10,12 @@ class PostForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['group'].empty_label = "Выберите группу"
+        self.fields['group'].empty_label = 'Выберите группу'
 
     def clean_text(self):
         text = self.cleaned_data['text']
-        if text == '':
+        if text == 'Толстой - графоман!':
             raise forms.ValidationError(
-                'Эй! Ты ничего не ввел! Давай-ка еще раз!'
+                'Эй! Ты просто его плохо знаешь!'
             )
         return text

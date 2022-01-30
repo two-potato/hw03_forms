@@ -10,12 +10,10 @@
           </li> 
           <li class="list-group-item">
             {% if posts.group %}
-              Группа: {{group.title}}
-              <a href={% url 'posts:group_list' posts.group.slug %}>
-                все записи группы
+            <a href={% url 'posts:group_list' posts.group.slug %}>
+              Группа: {{posts.group.title}} 
               </a>
             {% endif %}
-
           </li>            
           <li class="list-group-item">
             Автор: {{posts.author.get_full_name}} {{posts.author}}
@@ -31,9 +29,8 @@
         </ul>
       </aside>
       <article class="col-12 col-md-9">
-        {{posts.text}}
-        <!-- эта кнопка видна только автору -->
-				{% if user.is_authenticated %}
+        {{posts.text|linebreaks}}
+				{% if user.is_authenticated and user == posts.author %}
 					<a class="btn btn-primary" href={% url 'posts:post_edit' posts.pk %}>
 						редактировать запись
 					</a>    
