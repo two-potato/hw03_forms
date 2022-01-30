@@ -134,4 +134,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # указываем директорию, в которую будут складываться файлы писем
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'send_email')
 
-PAGINATOR_ITEMS_ON_PAGE=10
+PAGINATOR_ITEMS_ON_PAGE = 10
