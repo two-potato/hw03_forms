@@ -1,8 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from django.utils.text import slugify
-
 User = get_user_model()
 
 
@@ -13,14 +11,6 @@ class Group(models.Model):
 
     def __str__(self):
         return self.title
-
-    # def get_absolute_url(self):
-    #     return reverse("posts:group_list", kwargs={"slug": self.slug})
-
-    # def save(self, *args, **kwargs):
-    #     if not self.slug:
-    #         self.slug = slugify(self.title)
-    #     super(Group, self).save(*args, **kwargs)
 
 
 class Post(models.Model):
@@ -38,4 +28,4 @@ class Post(models.Model):
     )
 
     class Meta:
-        ordering = ('pub_date',)
+        ordering = ('-pub_date',)

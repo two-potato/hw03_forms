@@ -11,10 +11,17 @@
         >
       <span style="color:red">Ya</span>tube</a>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <buttton
+      class="navbar-toggler collapsed"
+      type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      >
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    </buttton>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="nav  nav-pills ">
         <li class="nav-item">              
           <a class="nav-link" href={% url 'about:author' %}>
@@ -26,40 +33,38 @@
             Технологии
           </a>
         </li>
-              <!-- пункты меню видны только авторизованному пользователю -->
-              {% if user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link" href={% url 'posts:post_create' %}>
-                    {% comment %} <a class="nav-link" href={% url 'posts:post_create' %}> {% endcomment %}
-                    Новая запись
-                  </a>
-                </li>
-                <li class="nav-item"> 
-                  <a class="nav-link link-light " href={% url 'users:password_change' %}>
-                    Изменить пароль
-                  </a>
-                </li>
-                <li class="nav-item"> 
-                  <a class="nav-link link-light" href={% url 'users:logout' %}>Выйти</a>
-                </li>
-                <li>
-                  Пользователь: {{ user.get_username }}
-                <li>
-              <!-- конец пункты меню видны только авторизованному пользователю -->
-              <!-- пункты меню видны только неавторизованному пользователю -->
-              {% else %}
-                <li class="nav-item"> 
-                  <a class="nav-link link-light" href={% url 'users:login' %}>
-                    Войти
-                  </a>
-                </li>
-                <li class="nav-item"> 
-                  <a class="nav-link link-light " href={% url 'users:signup' %}>Регистрация</a>
-                </li>
-              {% endif %}
-              <!-- конец пункты меню видны только неавторизованному пользователю -->        
-            </ul> 
-          </div>     
-        
+<!-- пункты меню видны только авторизованному пользователю -->
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href={% url 'posts:post_create' %}>
+                Новая запись
+              </a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link link-light " href={% url 'users:password_change' %}>
+                Изменить пароль
+              </a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link link-light" href={% url 'users:logout' %}>Выйти</a>
+            </li>
+            <li>
+              Пользователь: {{ user.get_username }}
+            <li>
+<!-- конец пункты меню видны только авторизованному пользователю -->
+<!-- пункты меню видны только неавторизованному пользователю -->
+          {% else %}
+            <li class="nav-item"> 
+              <a class="nav-link link-light" href={% url 'users:login' %}>
+                Войти
+              </a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link link-light " href={% url 'users:signup' %}>Регистрация</a>
+            </li>
+          {% endif %}
+<!-- конец пункты меню видны только неавторизованному пользователю -->        
+      </ul>
+    </div>
   </div>
 </nav>

@@ -22,4 +22,4 @@ class PostAdmin(admin.ModelAdmin):
 class GroupAdmin(admin.ModelAdmin):
     list_display = ('title',)
     empty_value_display = '-пусто-'
-    prepopulated_fields = {'slug': ('title', )}
+    prepopulated_fields = {'slug': ('title',)}

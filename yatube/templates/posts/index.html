@@ -1,18 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}
   Последние обновления на сайте
-{% endblock title %}
-
+{%endblock title %}
 {% block content %}
-  <div class='container py-5'>
+  <div class="container py-5">
     <h1>Последние обновления на сайте</h1>
-    {% if posts %}
-      {% for post in page_obj %}
-        <article>
-          {% include 'includes/article.html' with show_group_link=True %}
-        </article>
-        {% endfor %}
-          {% include 'includes/paginator.html' %}
-    {% endif %}       
+    {% if posts %} {% for post in page_obj %}
+      <article>
+        {% include 'includes/article.html' with show_group_link=True %}
+      </article>
+    {% endfor %} {% include 'includes/paginator.html' %} {% endif %}
   </div>
 {% endblock content %}

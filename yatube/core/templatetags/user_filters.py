@@ -3,6 +3,7 @@ from django import template
 register = template.Library()
 
 
-@register.filter 
+@register.filter
 def addclass(field, css):
+    '''Adding CSS class in django form.'''
     return field.as_widget(attrs={'class': css})
