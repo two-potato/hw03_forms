@@ -5,10 +5,13 @@
 {% block content %}
   <div class="container py-5">
     <h1>Последние обновления на сайте</h1>
-    {% if page_obj %} {% for post in page_obj %}
+    {% if page_obj %}
+        {% for post in page_obj %}
       <article>
         {% include 'includes/article.html' with show_group_link=True %}
       </article>
-    {% endfor %} {% include 'includes/paginator.html' %} {% endif %}
+    {% endfor %}
+      {% include 'includes/paginator.html' %}
+    {% endif %}
   </div>
 {% endblock content %}
