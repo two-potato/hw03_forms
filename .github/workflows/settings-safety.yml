@@ -1,0 +1,22 @@
+name: Legacy settings safety check
+on:
+  pull_request:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  settings:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify externalized key without importing legacy dependencies
+        run: |
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          tree = ast.parse(Path('yatube/yatube/settings.py').read_text())
+          assignments = [n for n in tree.body if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'SECRET_KEY' for t in n.targets)]
+          assert len(assignments) == 1
+          assert ast.unparse(assignments[0].value) == "os.environ['SECRET_KEY']"
+          print("Settings syntax and environment key assignment verified.")
+          PY
